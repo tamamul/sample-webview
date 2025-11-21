@@ -27,16 +27,28 @@ android {
         buildConfigField "boolean", "FEATURE_WEBVIEW_BRIDGE_PLUGIN", "true"
     }
     signingConfigs {
-        storeFile {
-            //storeFile file('./keystore/upload_keystore.jks')
-            //storePassword '<password>'
-            //keyAlias '<alias>'
-            //keyPassword '<password>'
+    release {
+        storeFile file("./keystore/absenmarsa-release.jks")
+        storePassword "K2s7Bv9QpE3yXz8"
+        keyAlias "absenmarsa"
+        keyPassword "A9f4Lm2QwZ6tPp3"
 
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
+        v1SigningEnabled true
+        v2SigningEnabled true
     }
+}
+
+buildTypes {
+    release {
+        signingConfig signingConfigs.release
+        minifyEnabled true
+        shrinkResources true
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+    debug {
+        signingConfig signingConfigs.release
+    }
+}
     buildTypes {
         release {
             //signingConfig signingConfigs.storeFile
